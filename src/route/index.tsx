@@ -1,5 +1,5 @@
-import Home from './Home.tsx';
-import Naive from './Naive.tsx';
-import Network from './Network.tsx';
+import Home from './Home';
+import Naive from './Naive';
+import Network from './Network';
 
 export { Home, Naive, Network };
