@@ -1,7 +1,13 @@
 import axios, { AxiosError } from "axios";
 
-export const callAPI = async <ReqType, ResType>(endpoint: string, method: string, data?: ReqType) => {
-    const response_data: ResType = 
+export const callAPI = async <ReqType, ResType>
+    (
+        endpoint: string, 
+        method: string, 
+        data?: ReqType
+    ): Promise<ResType> => 
+{
+    const response_data = 
         await axios({
             method: method,
             url: endpoint,
@@ -16,5 +22,5 @@ export const callAPI = async <ReqType, ResType>(endpoint: string, method: string
             throw error;
         });
 
-    return response_data;
+    return response_data as ResType;
 }
