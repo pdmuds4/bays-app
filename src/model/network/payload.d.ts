@@ -1,3 +1,5 @@
+import { CategoryScore, SexScore, TimeScore, UseTimeScore } from "@domain/naive/score";
+
 export type NetworkRequest = {
     type: "category" | "sex" | "time" | "use_time";
     evidence: {

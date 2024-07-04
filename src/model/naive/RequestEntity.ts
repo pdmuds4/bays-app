@@ -2,7 +2,7 @@ import { NaiveRequest } from "@domain/naive/payload";
 
 export default class NaiveRequestEntity {
     constructor(
-        private _sentence: string
+        private _sentence: NaiveRequest["sentence"],
     ) {}
 
     get json(): NaiveRequest {
