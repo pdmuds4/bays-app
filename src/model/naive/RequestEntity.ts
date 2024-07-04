@@ -1,4 +1,4 @@
-import { NaiveRequest } from "naive";
+import { NaiveRequest } from "@domain/naive/payload";
 
 export default class NaiveRequestEntity {
     constructor(

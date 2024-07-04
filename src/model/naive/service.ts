@@ -1,4 +1,4 @@
-import { NaiveRequest, NaiveResponse } from "naive";
+import { NaiveRequest, NaiveResponse } from "@domain/naive/payload";
 import RequestEntity from "@domain/naive/RequestEntity";
 import { callAPI } from "@utils/callAPI";
 
