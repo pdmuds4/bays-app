@@ -1,12 +1,31 @@
 import "./style.css";
-import { Heading, Container, Text, SimpleGrid, List, ListItem } from "@yamada-ui/react"
+import { 
+    Heading, Container, Text, SimpleGrid, List, ListItem, 
+    useAsyncRetry
+} from "@yamada-ui/react"
+import { useState } from "react";
 
-import DescriptCard from "./Card";
-import ResultPieChart from "./PieChart";
-import LoadingDisplay from "./Loading";
 import TextField from "./TextField";
+import DescriptCard from "./Card";
+import LoadingDisplay from "./Loading";
+import ErrorDisplay from "./Error";
+import ResultPieChart from "./PieChart";
+
+import RequestEntity from "@domain/naive/RequestEntity";
+import DomainService from "@domain/naive/service";
 
 const Naive:React.FC = () => {
+    const [payload, setPayload] = useState<string>("");
+    const { value: response, error, loading, retry: mockCallApi } = useAsyncRetry(
+        async () => {
+            console.log(payload);
+            if (payload.length) {
+                const request = new RequestEntity(payload);
+                return await new DomainService().postToApi(request);
+            }
+        }, [],
+    )
+    
     return (
         <Container className="naive-body">
             <Heading
@@ -36,12 +55,27 @@ const Naive:React.FC = () => {
                 w="full" 
                 columns={{base: 2, md: 1}}>
                 <Container centerContent>
-                    <TextField />
+                    <TextField
+                        getPayload={(arg: string) => setPayload(arg)}
+                        submitEvent={mockCallApi}
+                        resetEvent={()=>{
+                            setPayload("")
+                            mockCallApi()
+                        }}
+                    />
                 </Container>
                 <Container margin="auto 0" centerContent>
-                    {/* <DescriptCard /> */}
-                    {/* <ResultPieChart /> */}
-                    {/* <LoadingDisplay /> */}
+                    { loading ? 
+                        <LoadingDisplay 
+                            detail={payload.length ? "確率を計算しています..." : "読み込み中..."} 
+                        /> 
+                    : error ?
+                        <ErrorDisplay error={error} />
+                    : response ?
+                        <ResultPieChart data={response}/>
+                    : 
+                        <DescriptCard />
+                    }
                 </Container>
             </SimpleGrid>
         </Container>

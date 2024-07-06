@@ -8,7 +8,8 @@ export default defineConfig({
     ],
     resolve:{
         alias:{
-        "@utils": "/src/utils"
+            "@utils": "/src/utils",
+            "@domain": "/src/model",
         }
     },
     server:{
