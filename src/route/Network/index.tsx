@@ -57,6 +57,9 @@ const Network:React.FC = () => {
                     <SelectorField 
                         getPayload={(arg) => setPayload(arg)}
                         submitEvent={mockCallApi}
+                        resetEvent={() => {
+                            mockCallApi()
+                        }}
                     />
                 </Container>
                 <Container margin="auto 0" centerContent>

@@ -9,6 +9,7 @@ import NetworkRepository from "@domain/network/repository";
 const SelectorField: React.FC<{
     getPayload: (arg: {type: string, evidence: {[key: string]: number}}) => void,
     submitEvent: () => void,
+    resetEvent: () => void,
 }> = (props) => {
     const [selectValues, setSelect] = useState<{
         type: string, 
@@ -115,6 +116,7 @@ const SelectorField: React.FC<{
                                 use_time: "",
                         }});
                         props.getPayload({type: "", evidence: {}});
+                        props.resetEvent();
                     }}
                 >リセット</Button>
             </ButtonGroup>
