@@ -2,7 +2,7 @@ import { NetworkRequest } from "@domain/network/payload";
 
 export default class NetworkRequestEntity {
     constructor(
-        private _type: NetworkRequest["type"],
+        private _type: string,
         private _evidence: NetworkRequest["evidence"]
     ) {}
 

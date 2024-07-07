@@ -1,11 +1,11 @@
 import { Flex, Select, Text, Option } from "@yamada-ui/react";
 
-
 const CategorySelect: React.FC<{
+    value: string;
     placeholder: string;
-    disabled?: boolean;
-    options?: {value: string, label: string}[];
-    onChange?: (value: string) => void;
+    disabled: boolean;
+    options: string[];
+    onChange: (value: string) => void;
 }> = (props) => {
     return (
         <Flex w="full" justifyContent="center">
@@ -19,16 +19,17 @@ const CategorySelect: React.FC<{
             </Text>
             <Select
                 width="50%"
-                placeholder="選択されていません"
+                placeholder="条件を設定"
                 variant="fill" 
                 color="#716aff" 
                 bgColor="white"
+                value={props.value}
                 onChange={props.onChange}
                 isReadOnly={props.disabled}
                 opacity={props.disabled ? 0.5 : 1}
             >
-                {props.options?.map((option) => (
-                    <Option value={option.value}>{option.label}</Option>
+                {props.options?.map((label, i) => (
+                    <Option key={i} value={String(i)}>{label}</Option>
                 ))}
             </Select>
         </Flex>

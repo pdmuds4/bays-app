@@ -1,11 +1,31 @@
 import "./style.css";
-import { Container, Heading, Text, SimpleGrid, List, ListItem } from "@yamada-ui/react";
-import DescriptCard from "./Card";
+import { useState } from "react";
+import { 
+    Container, Heading, Text, SimpleGrid, List, ListItem,
+    useAsyncRetry
+} from "@yamada-ui/react";
+
 import SelectorField from "./SelectorField";
-import ResultPieChart from "./PieChart";
+import DescriptCard from "./Card";
 import LoadingDisplay from "./Loading"
+import ErrorDisplay from "./Error";
+import ResultPieChart from "./PieChart";
+
+import RequestEntity from "@domain/network/RequestEntity";
+import DomainService from "@domain/network/service";
 
 const Network:React.FC = () => {
+    const [payload, setPayload] = useState({type: "", evidence: {}});
+    const { value: response, error, loading, retry: mockCallApi } = useAsyncRetry(
+        async () => {
+            if (payload.type !== "") {
+                console.log(payload);
+                const request = new RequestEntity(payload.type, payload.evidence);
+                return await new DomainService().postToApi(request);
+            }
+        }, [],
+    )
+
     return (
         <Container className="network-body">
             <Heading
@@ -26,19 +46,31 @@ const Network:React.FC = () => {
                 className="network-descript"
                 textAlign="left"
                 fontSize={{base: "md", sm: "small"}}
-            >
-                <ListItem>- </ListItem>
+            >   
+                <ListItem>- 大学生10人のスマホから、1日分のスクリーンタイムを集計したデータを使用しています</ListItem>
+                <ListItem>- 推定したい項目と同じ条件項目を設定することはできません</ListItem>
             </List>
             <SimpleGrid
                 w="full" 
                 columns={{base: 2, md: 1}}>
                 <Container centerContent>
-                    <SelectorField />
+                    <SelectorField 
+                        getPayload={(arg) => setPayload(arg)}
+                        submitEvent={mockCallApi}
+                    />
                 </Container>
                 <Container margin="auto 0" centerContent>
-                    <DescriptCard />
-                    {/* <ResultPieChart /> */}
-                    {/* <LoadingDisplay /> */}
+                    { loading ? 
+                        <LoadingDisplay 
+                            detail={payload.type==="" ? "確率を計算しています..." : "読み込み中..."} 
+                        />
+                    : error ?
+                        <ErrorDisplay error={error} />
+                    : response ?
+                        <ResultPieChart data={response}/>
+                    : 
+                        <DescriptCard />
+                    }
                 </Container>
             </SimpleGrid>
         </Container>

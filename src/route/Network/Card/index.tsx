@@ -42,7 +42,7 @@ const DescriptCard: React.FC = () => {
                             "https://docs.google.com/presentation/d/1rQbVaiXNp_AhYvjGyUoJ0c6lB7Aobr3YMpRuLD99H_Q/edit?usp=sharing", 
                             "_blank"
                         )}
-                    >Documentation</Button>
+                    >Document</Button>
                 </ButtonGroup>
             </CardBody>
         </Card>
