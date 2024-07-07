@@ -9,11 +9,7 @@ export default defineConfig({
     resolve:{
         alias:{
             "@utils": "/src/utils",
-<<<<<<< HEAD
             "@domain": "/src/model",
-=======
-            "@domain": "/src/model"
->>>>>>> feature-ui-network
         }
     },
     server:{
