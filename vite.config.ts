@@ -9,13 +9,18 @@ export default defineConfig({
     resolve:{
         alias:{
             "@utils": "/src/utils",
+<<<<<<< HEAD
             "@domain": "/src/model",
+=======
+            "@domain": "/src/model"
+>>>>>>> feature-ui-network
         }
     },
     server:{
         proxy:{
             "/api": {
                 target: "https://python-tinyapi-sagh.onrender.com",
+                // target: "http://127.0.0.1:3000", // Debugging
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }

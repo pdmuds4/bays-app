@@ -1,0 +1,13 @@
+.network-body {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(135deg, #6e67fd 0%, #a2cdff 100%);
+    color: white;
+    overflow-y: auto;
+}
+
+
+.network-descript {
+    margin: 0 10vw;
+    text-align: center;
+}
