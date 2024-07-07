@@ -18,9 +18,12 @@ const Network:React.FC = () => {
     const [payload, setPayload] = useState({type: "", evidence: {}});
     const { value: response, error, loading, retry: mockCallApi } = useAsyncRetry(
         async () => {
-            if (payload.type !== "") {
+            if (["category", "sex", "time", "use_time"].some((t) => t === payload.type)) {
                 console.log(payload);
-                const request = new RequestEntity(payload.type, payload.evidence);
+                const request = new RequestEntity(
+                    payload.type as "category" | "sex" | "time" | "use_time",
+                    payload.evidence
+                );
                 return await new DomainService().postToApi(request);
             }
         }, [],
