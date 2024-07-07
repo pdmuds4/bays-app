@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# ベイズ推論アプリ
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このアプリは、ベイズ推論を用いて、データからパラメータを推定するための1to1の簡単なアプリケーションです。
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ニュース記事分類推定
+* 任意のニュース記事の文章を、「天気」「生活」「スポーツ」「文化」「経済」からそれぞれに分類できる確率を円グラフで掲示します。
 
-## Expanding the ESLint configuration
+### 仕組み
+このアプリではPythonライブラリ「MeCab」を使った文章の形態要素解析を行なっています。 形態要素解析によって分類された品詞ごとに、あらかじめ分類された学習データに含まれる確率を計算します。 そのカテゴリーの算出値が高いほど、そのカテゴリーに分類される確率が高いと判断されます。
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 注意
+- 日本語以外には対応していません
+- 少なくとも1文字以上の全角文字が含まれている必要があります
+- 文字数に制限はありませんが、文章が長い場合、推定に時間がかかることがあります
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## スマホ利用状況推定
+* 「性別」「使用時間」「使った時刻」「使ったアプリのカテゴリー」のいずれかの情報から他の情報を推定します。
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 仕組み
+このアプリではPythonライブラリ「pgmpy」を使ったベイジアンネットワークを構築しています。 「性別」⇨「使用時間」、「使った時刻」⇨「使用時間」、「使用時間」⇨「使ったアプリのカテゴリー」というネットワークを内部で構築しており、 入力された複数の項目の条件下で、推定したい項目の確率分布を計算します。
+
+### 注意
+- 大学生10人のスマホから、1日分のスクリーンタイムを集計したデータを使用しています
+- 推定したい項目と同じ条件項目を設定することはできません

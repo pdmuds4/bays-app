@@ -7,8 +7,6 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@types/*": ["src/types/*"],
-      "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@domain/*": ["src/model/*"]
     },
