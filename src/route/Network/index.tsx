@@ -32,7 +32,7 @@ const Network:React.FC = () => {
                 textAlign="center"
                 size={{base: "3xl", md: "2xl", sm: "lg"}}
             >
-                ニュース記事分類推定
+                スマホ利用状況推定
             </Heading>
             <Text 
                 textAlign="left"
