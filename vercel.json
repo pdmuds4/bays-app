@@ -3,10 +3,6 @@
         { 
             "source" :  "/(.*)" , 
             "destination" :  "/" 
-        },
-        { 
-            "source": "/api/:path*", 
-            "destination": "https://python-tinyapi-sagh.onrender.com/:path*"
         }
     ] 
 }
