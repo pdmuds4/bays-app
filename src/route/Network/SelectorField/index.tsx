@@ -79,9 +79,9 @@ const SelectorField: React.FC<{
                     leftIcon={<FaChartPie />}
                     disabled={
                         selectValues.type === "" || 
-                        Object.values(selectValues.evidence).filter(
-                            (p)=>!Number.isNaN(p)
-                        ).length === 0
+                        Object.values(selectValues.evidence).every(
+                            (p)=> p === ""
+                        )
                     }
                     onClick={() => {
                         props.getPayload(

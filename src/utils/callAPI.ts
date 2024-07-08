@@ -12,6 +12,7 @@ export const callAPI = async <ReqType, ResType>
             method: method,
             url: `https://python-tinyapi-sagh.onrender.com${endpoint}`,
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
                 'X-API-Key': import.meta.env.VITE_API_KEY as string
             },
