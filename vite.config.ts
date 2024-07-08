@@ -12,14 +12,14 @@ export default defineConfig({
             "@domain": "/src/model",
         }
     },
-    // server:{
-    //     proxy:{
-    //         "/api": {
-    //             target: "https://python-tinyapi-sagh.onrender.com",
-    //             // target: "http://127.0.0.1:3000", // Debugging
-    //             changeOrigin: true,
-    //             rewrite: (path) => path.replace(/^\/api/, '')
-    //         }
-    //     }
-    // }
+    server:{
+        proxy:{
+            "/api": {
+                target: "https://python-tinyapi-sagh.onrender.com",
+                // target: "http://127.0.0.1:3000", // Debugging
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, '')
+            }
+        }
+    }
 })

@@ -10,7 +10,7 @@ export const callAPI = async <ReqType, ResType>
     const response_data = 
         await axios({
             method: method,
-            url: `https://python-tinyapi-sagh.onrender.com${endpoint}`,
+            url: endpoint,
             headers: {
                 'Content-Type': 'application/json',
                 'X-API-Key': import.meta.env.VITE_API_KEY as string
