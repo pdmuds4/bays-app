@@ -2,11 +2,11 @@
     "rewrites" :  [
         { 
             "source" :  "/naive", 
-            "destination" :  "/naive"
+            "destination" :  "/"
         },
         { 
             "source" :  "/network", 
-            "destination" :  "/network"
+            "destination" :  "/"
         },
         {
             "source": "/api/:path*",
