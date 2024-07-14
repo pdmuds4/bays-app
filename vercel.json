@@ -1,8 +1,12 @@
 { 
-    "rewrites" :  [ 
+    "rewrites" :  [
         { 
-            "source" :  "/(.*)" , 
-            "destination" :  "/" 
+            "source" :  "/naive", 
+            "destination" :  "/naive"
+        },
+        { 
+            "source" :  "/network", 
+            "destination" :  "/network"
         },
         {
             "source": "/api/:path*",
