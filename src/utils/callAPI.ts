@@ -10,7 +10,8 @@ export const callAPI = async <ReqType, ResType>
     const response_data = 
         await axios({
             method: method,
-            url: `https://python-tinyapi-sagh.onrender.com${endpoint}`,
+            //url: `https://python-tinyapi-sagh.onrender.com${endpoint}`,
+            url: `/api/${endpoint}`,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',

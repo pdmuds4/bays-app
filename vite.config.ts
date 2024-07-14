@@ -13,11 +13,13 @@ export default defineConfig({
         }
     },
     server:{
+        cors: false,
         proxy:{
             "/api": {
                 target: "https://python-tinyapi-sagh.onrender.com",
                 // target: "http://127.0.0.1:3000", // Debugging
                 changeOrigin: true,
+                secure: false,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }
         }
