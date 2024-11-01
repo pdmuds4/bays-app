@@ -3,17 +3,7 @@
 このアプリは、ベイズ推論を用いて、データからパラメータを推定するための1to1の簡単なアプリケーションです。
 
 ## 使用技術
-* フロントエンド
-    * React
-    * Vite
-    * TypeScript
-    * Yamada UI
-    * axios
-    * Jest
-* バックエンド
-    * FastAPI
-    * Python
-    * pydantic
+<img src="https://skillicons.dev/icons?i=react,vite,ts,jest,fastapi,py" />
 
 ## ニュース記事分類推定
 * 任意のニュース記事の文章を、「天気」「生活」「スポーツ」「文化」「経済」からそれぞれに分類できる確率を円グラフで掲示します。
