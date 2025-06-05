@@ -15,7 +15,7 @@ import RequestEntity from "@domain/network/RequestEntity";
 import DomainService from "@domain/network/service";
 
 const Network:React.FC = () => {
-    const [payload, setPayload] = useState({type: "", エビデンス: {}});
+    const [payload, setPayload] = useState({type: "", evidence: {}});
     const { value: response, error, loading, retry: mockCallApi } = useAsyncRetry(
         async () => {
             if (["category", "sex", "time", "use_time"].some((t) => t === payload.type)) {
