@@ -10,7 +10,7 @@
         },
         {
             "source": "/api/:path*",
-            "destination": "https://python-tinyapi-sagh.onrender.com/:path*"
+            "destination": "https://python-tiny-api.onrender.com/:path*"
         }
     ] 
 }
