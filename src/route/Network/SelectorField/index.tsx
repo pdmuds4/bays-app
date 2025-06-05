@@ -18,14 +18,15 @@ const SelectorField: React.FC<{
             sex: string,
             time: string,
             use_time: string,
-        } & Record<string, string> // Add string index signature
+            [key: string]: string
+        }
     }>({
         type: "", 
         evidence: {
-            category: "0",
-            sex: "0",
-            time: "0",
-            use_time: "0",
+            category: "",
+            sex: "",
+            time: "",
+            use_time: "",
         }
     });
 
@@ -88,7 +89,7 @@ const SelectorField: React.FC<{
                             {
                                 type: selectValues.type, 
                                 evidence: Object.fromEntries(
-                                    Object.entries(selectValues.evidence).map(([k,v]) => [k,Number(v)])
+                                    Object.entries(selectValues.evidence).map(([k,v]) => [k,Number(v === "" ? "0" : v)])
                                 )
                             }
                         );
