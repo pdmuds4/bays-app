@@ -5,7 +5,7 @@ import { callAPI } from "@utils/callAPI";
 export default class NaiveDomainService {
     async postToApi(request: RequestEntity): Promise<NaiveResponse> {
         return await callAPI<NaiveRequest, NaiveResponse>(
-            "/bays/naive",
+            "/baysapp/predict_naive",
             "POST",
             request.json
         );
