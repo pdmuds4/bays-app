@@ -93,12 +93,7 @@ const SelectorField: React.FC<{
                                 )
                             }
                         );
-                        console.log({
-                                type: selectValues.type, 
-                                evidence: Object.fromEntries(
-                                    Object.entries(selectValues.evidence).map(([k,v]) => [k,Number(v === "" ? "0" : v)])
-                                )
-                            });
+                        props.submitEvent();
                     }}
                 >推定</Button>
                 <Button 
