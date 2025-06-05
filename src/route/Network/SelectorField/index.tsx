@@ -18,6 +18,7 @@ const SelectorField: React.FC<{
             sex: string,
             time: string,
             use_time: string,
+            [key: string]: string
         }
     }>({
         type: "", 
