@@ -22,10 +22,10 @@ const SelectorField: React.FC<{
     }>({
         type: "", 
         evidence: {
-            category: "",
-            sex: "",
-            time: "",
-            use_time: "",
+            category: "0",
+            sex: "0",
+            time: "0",
+            use_time: "0",
         }
     });
 
@@ -88,9 +88,7 @@ const SelectorField: React.FC<{
                             {
                                 type: selectValues.type, 
                                 evidence: Object.fromEntries(
-                                    Object.entries(selectValues.evidence).filter(
-                                        ([k,v]) => k !== selectValues.type && v !== ""
-                                    ).map(([k,v]) => [k,Number(v)])
+                                    Object.entries(selectValues.evidence).map(([k,v]) => [k,Number(v)])
                                 )
                             }
                         );
