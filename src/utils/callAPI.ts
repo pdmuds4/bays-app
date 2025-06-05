@@ -15,7 +15,7 @@ export const callAPI = async <ReqType, ResType>
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json',
-                'X-API-Key': import.meta.env.VITE_API_KEY as string
+                'X-API-KEY': import.meta.env.VITE_API_KEY as string
             },
             data: data
         }).then((response) => {
